@@ -15,7 +15,7 @@ The other tests require:
 ## The Tests
 **NumPy**: random matrix generation, matrix multiplication, singular value decomposition
 
-**Scikit-learn**: classification dataset generation, SVM training, random forest training (both and multithreaded)
+**Scikit-learn**: classification dataset generation, SVM training, random forest training (both single and multithreaded)
 
 **Tensorflow**: image dataset generation, ResNet50 training
 
