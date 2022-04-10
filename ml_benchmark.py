@@ -106,7 +106,7 @@ import tensorflow as tf
 print(f'Tensorflow version: {tf.__version__}')
 if not tf.test.gpu_device_name():
     print('No GPU found. Using CPU.')
-tf.logging.set_verbosity(tf.logging.ERROR)
+#tf.logging.set_verbosity(tf.logging.ERROR)               # for tf 1.x
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 #os.environ['CUDA_VISIBLE_DEVICES'] = '-1'                # Uncomment to force CPU use on GPU-enabled systems
@@ -116,7 +116,8 @@ from tensorflow.keras.models import Model
 from tensorflow.keras import optimizers, applications
 from tensorflow.keras.layers import Dense, Dropout, GlobalAveragePooling2D, Input
 
-tf.random.set_random_seed(42)
+#tf.random.set_random_seed(42)                    # for tf 1.x
+tf.random.set_seed(42)
 
 IMAGES = 20
 

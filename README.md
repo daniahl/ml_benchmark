@@ -1,6 +1,8 @@
 # ml_benchmark
 Simple Python script to to test the performance of NumPy, scikit-learn, and tensorflow.
 
+**2022 edition update:** Updated to work with tensorflow 2.x, and added a new output example.
+
 ## Requirements
 * Python >= 3.4
 * NumPy
@@ -22,7 +24,7 @@ The other tests require:
 ## Anaconda Quick Start
 1. `git clone https://github.com/daniahl/ml_benchmark.git`
 2. `cd ml_benchmark`
-3. `conda create -n ml_benchmark python=3.6`
+3. `conda create -n ml_benchmark python=3.9`
 4. `conda activate ml_benchmark`
 5. `conda install scikit-learn tqdm tensorflow` (or `tensorflow-gpu`)
 6. `python ml_benchmark`
@@ -227,3 +229,114 @@ Specs: Core i7-9700k, 32GB RAM, NVIDIA Geforce GTX 1660 Ti, Windows 10 build 190
     Epoch 5/5
     20/20 [==============================] - 1s 29ms/sample - loss: 1.1573 - acc: 0.6000
     Training took 14.28 s.
+
+**2022 edition re-run**
+Same specs, but updated libraries, and CPU overclocked to sync all cores at max boost clock.
+
+
+NumPy version: 1.22.3
+
+openblas64__info:
+    library_dirs = ['D:\\a\\1\\s\\numpy\\build\\openblas64__info']
+    libraries = ['openblas64__info']
+    language = f77
+    define_macros = [('HAVE_CBLAS', None), ('BLAS_SYMBOL_SUFFIX', '64_'), ('HAVE_BLAS_ILP64', None)]
+blas_ilp64_opt_info:
+    library_dirs = ['D:\\a\\1\\s\\numpy\\build\\openblas64__info']
+    libraries = ['openblas64__info']
+    language = f77
+    define_macros = [('HAVE_CBLAS', None), ('BLAS_SYMBOL_SUFFIX', '64_'), ('HAVE_BLAS_ILP64', None)]
+openblas64__lapack_info:
+    library_dirs = ['D:\\a\\1\\s\\numpy\\build\\openblas64__lapack_info']
+    libraries = ['openblas64__lapack_info']
+    language = f77
+    define_macros = [('HAVE_CBLAS', None), ('BLAS_SYMBOL_SUFFIX', '64_'), ('HAVE_BLAS_ILP64', None), ('HAVE_LAPACKE', None)]
+lapack_ilp64_opt_info:
+    library_dirs = ['D:\\a\\1\\s\\numpy\\build\\openblas64__lapack_info']
+    libraries = ['openblas64__lapack_info']
+    language = f77
+    define_macros = [('HAVE_CBLAS', None), ('BLAS_SYMBOL_SUFFIX', '64_'), ('HAVE_BLAS_ILP64', None), ('HAVE_LAPACKE', None)]
+Supported SIMD extensions in this NumPy install:
+    baseline = SSE,SSE2,SSE3
+    found = SSSE3,SSE41,POPCNT,SSE42,AVX,F16C,FMA3,AVX2
+    not found = AVX512F,AVX512CD,AVX512_SKX,AVX512_CLX,AVX512_CNL
+
+Generating matrices...
+It took 0.19 s.
+
+Running matrix multiplication test...
+4096x4096 matrix multiplication in 0.42 s.
+
+Running SVD test...
+SVD of 2048x1024 matrix in 0.59 s.
+
+Scikit-learn version: 1.0.2
+
+Creating classification dataset (10 classes, 10000 samples, 50 features)...
+It took 0.01 s.
+
+Running SVM test...
+SVM trained in 5.52 s.
+Score on training set: 0.8351
+
+Running random forest test (1 thread)...
+Random forest trained in 4.87 s.
+Score on training set: 1.0
+
+Running random forest test (2 threads)...
+Random forest trained in 2.54 s.
+Score on training set: 1.0
+
+Running random forest test (max threads)...
+Random forest trained in 0.79 s.
+Score on training set: 1.0
+
+Tensorflow version: 2.8.0
+
+Generating image data...
+It took 0.02 s.
+
+Training 5 epochs of 10-class ResNet50 on (20, 224, 224, 3)...
+Epoch 1/5
+
+ 1/10 [==>...........................] - ETA: 49s - loss: 2.3998 - accuracy: 0.0000e+00
+ 3/10 [========>.....................] - ETA: 0s - loss: 2.3271 - accuracy: 0.1667     
+ 4/10 [===========>..................] - ETA: 0s - loss: 2.9472 - accuracy: 0.1250
+ 6/10 [=================>............] - ETA: 0s - loss: 3.0012 - accuracy: 0.0833
+ 7/10 [====================>.........] - ETA: 0s - loss: 2.9517 - accuracy: 0.1429
+ 9/10 [==========================>...] - ETA: 0s - loss: 2.8952 - accuracy: 0.1111
+10/10 [==============================] - 6s 46ms/step - loss: 2.9903 - accuracy: 0.1000
+Epoch 2/5
+
+ 1/10 [==>...........................] - ETA: 0s - loss: 1.3093 - accuracy: 1.0000
+ 3/10 [========>.....................] - ETA: 0s - loss: 2.5292 - accuracy: 0.3333
+ 4/10 [===========>..................] - ETA: 0s - loss: 2.5874 - accuracy: 0.2500
+ 6/10 [=================>............] - ETA: 0s - loss: 2.6169 - accuracy: 0.2500
+ 8/10 [=======================>......] - ETA: 0s - loss: 2.7593 - accuracy: 0.2500
+10/10 [==============================] - ETA: 0s - loss: 2.5985 - accuracy: 0.2000
+10/10 [==============================] - 0s 45ms/step - loss: 2.5985 - accuracy: 0.2000
+Epoch 3/5
+
+ 1/10 [==>...........................] - ETA: 0s - loss: 1.6744 - accuracy: 0.0000e+00
+ 3/10 [========>.....................] - ETA: 0s - loss: 2.1707 - accuracy: 0.3333    
+ 5/10 [==============>...............] - ETA: 0s - loss: 2.2524 - accuracy: 0.3000
+ 7/10 [====================>.........] - ETA: 0s - loss: 2.4864 - accuracy: 0.3571
+ 9/10 [==========================>...] - ETA: 0s - loss: 2.5263 - accuracy: 0.3333
+10/10 [==============================] - 0s 45ms/step - loss: 2.5342 - accuracy: 0.3000
+Epoch 4/5
+
+ 1/10 [==>...........................] - ETA: 0s - loss: 0.8251 - accuracy: 0.5000
+ 3/10 [========>.....................] - ETA: 0s - loss: 1.5115 - accuracy: 0.3333
+ 5/10 [==============>...............] - ETA: 0s - loss: 1.7109 - accuracy: 0.4000
+ 7/10 [====================>.........] - ETA: 0s - loss: 1.8182 - accuracy: 0.2857
+ 9/10 [==========================>...] - ETA: 0s - loss: 2.1064 - accuracy: 0.2778
+10/10 [==============================] - 0s 44ms/step - loss: 2.1482 - accuracy: 0.2500
+Epoch 5/5
+
+ 1/10 [==>...........................] - ETA: 0s - loss: 2.9791 - accuracy: 0.0000e+00
+ 3/10 [========>.....................] - ETA: 0s - loss: 2.1891 - accuracy: 0.3333    
+ 5/10 [==============>...............] - ETA: 0s - loss: 2.0118 - accuracy: 0.3000
+ 7/10 [====================>.........] - ETA: 0s - loss: 2.0806 - accuracy: 0.2143
+ 9/10 [==========================>...] - ETA: 0s - loss: 2.1423 - accuracy: 0.1667
+10/10 [==============================] - 0s 45ms/step - loss: 2.0790 - accuracy: 0.2000
+Training took 7.74 s.
